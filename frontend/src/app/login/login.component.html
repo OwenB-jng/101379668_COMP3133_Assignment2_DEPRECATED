@@ -1,18 +1,14 @@
 <!-- src/app/login/login.component.html -->
 <div class="login-container">
     <h2>Login</h2>
-    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
-      <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" [(ngModel)]="username" required class="form-control" placeholder="Enter username">
-      </div>
+    <form (ngSubmit)="onLogin()">
+      <label for="username">Username or Email:</label>
+      <input type="text" id="username" [(ngModel)]="usernameOrEmail" name="usernameOrEmail" required>
   
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" [(ngModel)]="password" required class="form-control" placeholder="Enter password">
-      </div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required>
   
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button type="submit">Login</button>
     </form>
   </div>
   

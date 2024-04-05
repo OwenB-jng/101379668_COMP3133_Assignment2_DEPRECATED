@@ -20,12 +20,13 @@ export class GraphqlService {
       );
   }
 
-  // Add this method for the login query
   login(usernameOrEmail: string, password: string): Observable<any> {
     const LOGIN_QUERY = gql`
       query Login($usernameOrEmail: String!, $password: String!) {
         login(usernameOrEmail: $usernameOrEmail, password: $password) {
-          // ...specify fields you want to retrieve, for example id, username, etc.
+          id
+          username
+          # Add other fields you want to retrieve here, using correct comment syntax
         }
       }
     `;
