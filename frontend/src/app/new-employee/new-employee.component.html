@@ -1,0 +1,17 @@
+<form (ngSubmit)="addEmployee()">
+    <input type="text" [(ngModel)]="firstName" name="firstName" placeholder="First Name" required>
+    <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="Last Name" required>
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+    <input type="number" [(ngModel)]="salary" name="salary" placeholder="Salary" required>
+    <select [(ngModel)]="gender" name="gender" required>
+      <option value="" disabled selected>Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+    <button type="submit">Add Employee</button>
+    <form>
+        <button type="button" (click)="navigateToEmployeeList()">Employee List</button>
+    </form>
+  </form>
+  

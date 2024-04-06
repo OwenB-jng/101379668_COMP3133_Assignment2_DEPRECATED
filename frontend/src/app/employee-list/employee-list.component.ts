@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { GraphqlService } from '../graphql.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { GraphqlService } from '../graphql.service';
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];
 
-  constructor(private graphqlService: GraphqlService) {}
+  constructor(private graphqlService: GraphqlService, private router: Router) {}
 
   ngOnInit(): void {
     this.graphqlService.getAllEmployees().subscribe({
@@ -23,5 +24,8 @@ export class EmployeeListComponent implements OnInit {
         console.error('Error fetching employees', error);
       }
     });
+  }
+  navigateToEmployeeCreate() {
+    this.router.navigate(['/new-employee']);
   }
 }

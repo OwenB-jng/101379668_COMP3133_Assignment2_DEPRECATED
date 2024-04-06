@@ -38,7 +38,6 @@ const typeDefs = gql`
     addEmployee(input: EmployeeInput!): Employee
     updateEmployee(id: ID!, input: EmployeeInput!): Employee
     deleteEmployee(id: ID!): Employee
-    # Add more mutation types as needed
   }
 `;
 

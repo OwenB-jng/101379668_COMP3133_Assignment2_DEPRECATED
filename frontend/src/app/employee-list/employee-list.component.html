@@ -1,7 +1,10 @@
 <ul *ngIf="employees.length > 0; else loading">
-    <li *ngFor="let employee of employees">
-      {{ employee.first_name }} {{ employee.last_name }} - {{ employee.email }}
-    </li>
-  </ul>
+  <li *ngFor="let employee of employees">
+    {{ employee.first_name }} {{ employee.last_name }} - {{ employee.email }}
+  </li>
+</ul>
+<form>
+  <button type="button" (click)="navigateToEmployeeCreate()">Create Employee</button>
+</form>
   <ng-template #loading><p>Loading employees...</p></ng-template>
   

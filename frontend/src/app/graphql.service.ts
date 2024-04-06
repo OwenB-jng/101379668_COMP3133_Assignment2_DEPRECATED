@@ -39,6 +39,26 @@ export class GraphqlService {
     });
   }
 
+  addEmployee(employeeInput: { first_name: string; last_name: string; email: string; gender: string; salary: number }) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation AddEmployee($input: EmployeeInput!) {
+          addEmployee(input: $input) {
+            _id
+            first_name
+            last_name
+            email
+            gender
+            salary
+          }
+        }
+      `,
+      variables: {
+        input: employeeInput,
+      },
+    });
+  }
+
   login(usernameOrEmail: string, password: string): Observable<any> {
     const LOGIN_QUERY = gql`
       query Login($usernameOrEmail: String!, $password: String!) {
