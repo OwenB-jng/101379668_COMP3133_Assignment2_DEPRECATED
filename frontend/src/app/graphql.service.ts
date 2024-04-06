@@ -39,6 +39,35 @@ export class GraphqlService {
     });
   }
 
+
+  updateEmployee(employeeId: string, updateData: { first_name: string; last_name: string; email: string; gender: string; salary: number }) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation UpdateEmployee($id: ID!, $input: EmployeeInput!) {
+          updateEmployee(id: $id, input: $input) {
+            _id
+            first_name
+            last_name
+            email
+            gender
+            salary
+          }
+        }
+      `,
+      variables: {
+        id: employeeId,
+        input: {
+          first_name: updateData.first_name,
+          last_name: updateData.last_name,
+          email: updateData.email,
+          gender: updateData.gender,
+          salary: updateData.salary,
+        },
+      },
+    });
+  }
+
+
   addEmployee(employeeInput: { first_name: string; last_name: string; email: string; gender: string; salary: number }) {
     return this.apollo.mutate({
       mutation: gql`
@@ -58,6 +87,22 @@ export class GraphqlService {
       },
     });
   }
+
+  deleteEmployee(employeeId: string) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation DeleteEmployee($id: ID!) {
+          deleteEmployee(id: $id) {
+            _id 
+          }
+        }
+      `,
+      variables: {
+        id: employeeId,
+      },
+    });
+  }
+  
 
   login(usernameOrEmail: string, password: string): Observable<any> {
     const LOGIN_QUERY = gql`
