@@ -1,4 +1,3 @@
-// src/app/app.component.ts
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -8,9 +7,8 @@ import { RouterOutlet } from '@angular/router';
     <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.css'],
-  imports: [RouterOutlet], // Keep only RouterOutlet here
+  imports: [RouterOutlet],
   standalone: true
 })
 export class AppComponent {
-  // AppComponent logic goes here
 }

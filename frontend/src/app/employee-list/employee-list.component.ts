@@ -7,7 +7,7 @@ import { GraphqlService } from '../graphql.service';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css'],
   standalone: true,
-  imports: [CommonModule] // Correct import for CommonModule
+  imports: [CommonModule] 
 })
 export class EmployeeListComponent implements OnInit {
   employees: any[] = [];

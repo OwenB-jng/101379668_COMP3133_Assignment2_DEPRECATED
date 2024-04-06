@@ -10,7 +10,7 @@ export interface User {
 
 export interface AuthResponse {
   user: User;
-  token: string; // Assuming your backend will return a token
+  token: string; 
 }
 
 @Injectable({
@@ -36,14 +36,12 @@ export class AuthService {
         usernameOrEmail,
         password
       },
-      fetchPolicy: 'network-only' // This ensures the query will go to the server every time and won't return cached results
+      fetchPolicy: 'network-only' 
     }).valueChanges.pipe(
       map(response => {
-        // Check if 'data' and 'login' exist in the response
         if (response.data && response.data.login) {
           return response.data.login;
         } else {
-          // Throw an error or return a default value if login data is not present
           throw new Error('Login data is not available');
         }
       })

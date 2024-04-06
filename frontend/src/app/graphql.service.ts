@@ -20,6 +20,25 @@ export class GraphqlService {
       );
   }
 
+  signup(username: string, email: string, password: string) {
+    return this.apollo.mutate({
+      mutation: gql`
+        mutation Signup($username: String!, $email: String!, $password: String!) {
+          signup(username: $username, email: $email, password: $password) {
+            username
+            email
+            password
+          }
+        }
+      `,
+      variables: {
+        username: username,
+        email: email,
+        password: password,
+      },
+    });
+  }
+
   login(usernameOrEmail: string, password: string): Observable<any> {
     const LOGIN_QUERY = gql`
       query Login($usernameOrEmail: String!, $password: String!) {
