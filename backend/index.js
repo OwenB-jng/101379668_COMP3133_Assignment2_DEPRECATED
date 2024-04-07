@@ -7,9 +7,20 @@ const resolvers = require('./resolvers');
 
 const app = express();
 
-// Place CORS as high up in the middleware stack as possible
-// This will allow cross-origin requests to your server
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = ['https://comp3133a2-nritb5r3s-owenb-jngs-projects.vercel.app', 'http://localhost:4200'];
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+};
+
 app.use(cors());
+app.use(cors(corsOptions));
 
 const server = new ApolloServer({
   typeDefs,
