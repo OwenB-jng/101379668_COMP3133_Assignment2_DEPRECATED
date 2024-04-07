@@ -6,7 +6,6 @@ const typeDefs = require('./schema');
 const resolvers = require('./resolvers');
 
 const app = express();
-
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = ['https://comp3133a2-nritb5r3s-owenb-jngs-projects.vercel.app', 'http://localhost:4200'];
@@ -19,13 +18,13 @@ const corsOptions = {
   credentials: true,
 };
 
-app.use(cors());
 app.use(cors(corsOptions));
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
+server.applyMiddleware({ app, path: '/graphql' });
 
 async function startServer() {
   await server.start();
@@ -38,7 +37,6 @@ async function startServer() {
 }
 
 startServer();
-
 mongoose.connect('mongodb+srv://owenbeattie1:OwifQLmb9CLyvnWg@cluster0.f9qly4r.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
