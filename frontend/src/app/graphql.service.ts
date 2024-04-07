@@ -2,13 +2,21 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from '../environments/environment.prod'; 
 import { GET_ALL_EMPLOYEES } from './graphql/queries';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GraphqlService {
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo, private httpLink: HttpLink) {
+    apollo.create({
+      link: httpLink.create({ uri: environment.backendUrl }),
+      cache: new InMemoryCache(),
+    });
+  }
 
   getAllEmployees(): Observable<any[]> {
     return this.apollo

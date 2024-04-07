@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-  };
-  
+  production: false,
+  backendUrl: 'http://localhost:4000/graphql',
+};
