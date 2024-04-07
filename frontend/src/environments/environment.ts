@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  backendUrl: 'http://localhost:4000/graphql',
+  production: true,
+  backendUrl: 'https://one01379668-comp3133-assignment2.onrender.com/graphql',
 };

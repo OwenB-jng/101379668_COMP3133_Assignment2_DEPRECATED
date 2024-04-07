@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from '../environments/environment.prod'; 
+import { environment } from '../environments/environment'; 
 import { GET_ALL_EMPLOYEES } from './graphql/queries';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
